@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#a18cd1">
+  <title>Cafe Bliss | Order Online</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Cafe Bliss home"><span class="brand-icon">☕</span><span>Cafe <b>Bliss</b></span></a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+    </nav>
+    <button class="cart-nav" id="cartJump" type="button" aria-label="Go to cart">🛒 Cart <span id="cartCount">0</span></button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">FRESHLY BREWED • MADE WITH LOVE</p>
+        <h1>Your happy place<br>for <span>coffee & treats.</span></h1>
+        <p class="hero-text">Sip something lovely. Pick your favourites, place your order, and let us make your day a little sweeter.</p>
+        <a class="primary-button hero-button" href="#menu">Explore the menu <span>→</span></a>
+        <div class="hero-notes"><span>☕ Freshly prepared</span><span>♡ Made for your mood</span></div>
+      </div>
+      <div class="hero-art" aria-label="Coffee illustration">
+        <div class="blob blob-one"></div><div class="blob blob-two"></div>
+        <div class="coffee-card">
+          <div class="coffee-steam">〰 〰</div>
+          <div class="coffee-cup"><div class="coffee-top"><span>♡</span></div><div class="cup-handle"></div></div>
+          <div class="coffee-shadow"></div>
+          <div class="floating-note note-one">☕ Good coffee</div>
+          <div class="floating-note note-two">✦ Good mood</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits" aria-label="Cafe highlights">
+      <div><span class="benefit-icon">🌱</span><span><b>Fresh ingredients</b><small>Quality in every bite</small></span></div>
+      <div><span class="benefit-icon">⚡</span><span><b>Quick ordering</b><small>Simple and convenient</small></span></div>
+      <div><span class="benefit-icon">💗</span><span><b>Made with care</b><small>A little joy in every cup</small></span></div>
+    </section>
+
+    <section class="menu-section section-wrap" id="menu">
+      <div class="section-heading">
+        <div><p class="eyebrow">YOUR NEXT FAVOURITE</p><h2>Explore our <span>menu</span></h2><p class="muted">Find your comfort drink or a little something to snack on.</p></div>
+        <label class="search-box"><span>⌕</span><input id="menuSearch" type="search" placeholder="Search the menu..." aria-label="Search menu"></label>
+      </div>
+      <div class="category-row" id="categoryFilters" aria-label="Filter menu by category">
+        <button class="category-chip active" data-category="All" type="button">All items</button>
+        <button class="category-chip" data-category="Coffee" type="button">☕ Coffee</button>
+        <button class="category-chip" data-category="Tea" type="button">🍵 Tea</button>
+        <button class="category-chip" data-category="Cold Drinks" type="button">🧋 Cold drinks</button>
+        <button class="category-chip" data-category="Snacks" type="button">🥐 Snacks</button>
+        <button class="category-chip" data-category="Desserts" type="button">🍰 Desserts</button>
+      </div>
+      <div class="menu-grid" id="menuGrid" aria-live="polite"></div>
+    </section>
+
+    <section class="order-section section-wrap" id="cart">
+      <div class="section-heading">
+        <div><p class="eyebrow">ALMOST THERE</p><h2>Your <span>order</span></h2><p class="muted">Review your picks and tell us where to send your order.</p></div>
+      </div>
+      <div class="checkout-layout">
+        <div class="panel cart-panel">
+          <div class="panel-heading"><h3>🛍️ Your cart</h3><button id="clearCart" class="text-button" type="button">Clear cart</button></div>
+          <div id="cartItems" class="cart-items"><p class="empty-cart">Your cart is waiting for something delicious. ☕</p></div>
+          <div class="total-row"><span>Subtotal</span><b id="subtotal">₹0.00</b></div>
+          <div class="total-row"><span>Packaging</span><b id="packaging">₹0.00</b></div>
+          <div class="total-row grand-total"><span>Total</span><b id="total">₹0.00</b></div>
+          <p class="small-note">This demo does not collect online payment details.</p>
+        </div>
+        <form class="panel checkout-panel" id="checkoutForm">
+          <h3>📝 Order details</h3>
+          <label class="field-label" for="customerName">Your name *</label>
+          <input id="customerName" name="customerName" type="text" placeholder="Enter your full name" maxlength="80" required>
+          <label class="field-label" for="customerPhone">Phone number</label>
+          <input id="customerPhone" name="customerPhone" type="tel" placeholder="Enter your phone number" maxlength="20">
+          <label class="field-label" for="orderType">Order type *</label>
+          <select id="orderType" name="orderType" required><option value="Pickup">Pickup</option><option value="Dine-in">Dine-in</option></select>
+          <label class="field-label" for="specialNotes">Special instructions</label>
+          <textarea id="specialNotes" name="specialNotes" rows="3" maxlength="300" placeholder="Less sugar, extra hot, etc. (optional)"></textarea>
+          <button class="primary-button place-order-button" id="placeOrderBtn" type="submit">Place my order <span>→</span></button>
+          <p class="form-hint">Your order will be sent to the cafe order API.</p>
+          <div id="orderMessage" class="order-message" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <section class="about-strip" id="about">
+      <div class="about-heart">♡</div><div><p class="eyebrow">A LITTLE CUP OF HAPPINESS</p><h2>Good days start with good coffee.</h2><p>Thanks for choosing Cafe Bliss. We can't wait to prepare something lovely for you.</p></div>
+      <a class="outline-button" href="#menu">Back to menu ↑</a>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#home"><span class="brand-icon">☕</span><span>Cafe <b>Bliss</b></span></a><p>Made with ♡ and a little caffeine.</p><small>Student project demo • Online payment is not enabled</small></footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
